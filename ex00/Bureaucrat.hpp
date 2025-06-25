@@ -5,7 +5,7 @@
 #include <ostream>
 #include <cstring>
 #include <cctype>
-
+#include <exception>
 
 class Bureaucrat
 {
@@ -33,5 +33,15 @@ class Bureaucrat
 	};
 	
 	std::ostream&  operator<<(std::ostream &_cout,  Bureaucrat const &other);
+
+void Bureaucrat::GradeTooHighException()
+{
+	std::cout << "Grade " << this->getGrade() << " is too high for the bureaucraf!\nGrades allowed between 1 and 150" << std::endl;
+}
+
+void Bureaucrat::GradeTooLowException()
+{
+    std::cout << "Grade " << this->getGrade() << " is too low for the bureaucraf!\nGrades allowed between 1 and 150" << std::endl;
+}
 
 #endif

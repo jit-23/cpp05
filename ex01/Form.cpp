@@ -27,6 +27,8 @@ Form::Form(std::string _name, int _grade_to_sign, int _grade_to_execute) : name(
 	std::cout << "Default Form constructor called" << std::endl;
 }
 
+void Form::Be
+
 void Form::GradeTooHighException()
 {
 	if ((this->GetGradeToExecute() > 150 || this->GetGradeToExecute() < 1))

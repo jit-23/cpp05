@@ -16,7 +16,9 @@ class Form
 		Form(const Form &other);
 		void GradeTooHighException();
 		void GradeTooLowException();
-	
+
+		void BeSigned(Bureaucrat const &other);
+
 		std::string GetFormSignature()const;
 		std::string GetFormName()const;
 		int GetGradeToSign()const;
