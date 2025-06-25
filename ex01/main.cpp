@@ -1,19 +1,16 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+
 
 int main()
 {
-    Bureaucrat b1;
-    std::cout << b1.getGrade() << std::endl;
-    Bureaucrat b2(710);
-    std::cout << b2.getGrade() << std::endl;
-    Bureaucrat b3("b3");
-    std::cout << b3.getGrade() << std::endl;
-    Bureaucrat b4("b4", 130);
-    std::cout << b4.getGrade() << std::endl;
-
-	std::cout << "-----------------------" << std::endl;
+	Bureaucrat	b1;
+	Form		paper1("Tratado da 42", 100, 80);
+	Form		paper2(paper1);
 	
-	std::cout << b4 << std::endl;
+
+	std::cout << paper2 << std::endl;
 
     return 0;
 }

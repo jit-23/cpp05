@@ -1,7 +1,7 @@
-NAME:=Bureaucrat
+NAME:=Form
 CXXFLAGS:= -Wall -Werror -Wextra -std=c++98
 CXX:= c++
-SRC:= main.cpp Bureaucrat.cpp
+SRC:= main.cpp Bureaucrat.cpp Form.cpp
 OBJ:=$(patsubst %.cpp, %.o, $(SRC))
 
 all: ${NAME}
