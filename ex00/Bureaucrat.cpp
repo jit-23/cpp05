@@ -16,28 +16,53 @@ Bureaucrat::Bureaucrat(const std::string _name) : name(_name)
 /* only grade passed */
 Bureaucrat::Bureaucrat(int _grade) : grade(_grade)
 {
-    try
-    {
-        if (_grade > 150 || _grade < 1)
-            throw _grade;       
-        this->grade = _grade;
-    }
-    catch(int e)
-    {
-        if (e > 150)
-            GradeTooHighException();
-        else
-            GradeTooLowException(); 
-    }
-    
-    this->name = "Bureaucrat";
+	this->name = "Bureaucrat";
+	std::string grade_str = " " + itoa(_grade);
+	std::string err_msg = "Invalid grade for " + this->getName();
+	err_msg += grade_str;
+	
+	try
+	{
+		if (_grade > 150)
+		{
+			err_msg += " is to Low for creation!!";
+            throw GradeTooLowException(err_msg);
+		}
+		if (_grade < 1)
+		{
+			err_msg += " is to High for creation!!";
+            throw GradeTooHighException(err_msg);
+		}
+	}
+	catch(const std::exception& e)
+		std::cerr << e.what() << std::endl;
+	
     std::cout << "Bureaucrat default Constructor called" << std::endl;
 }
 
 /* both args(name and grade) passed */
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
 {
-    name = "Bureaucrat";
+	std::string grade_str = " " + itoa(_grade);
+	std::string err_msg = "Invalid grade for " + this->getName();
+	err_msg += grade_str;
+	
+	try
+	{
+		if (_grade > 150)
+		{
+			err_msg += " is to Low for creation!!";
+            throw GradeTooLowException(err_msg);
+		}
+		if (_grade < 1)
+		{
+			err_msg += " is to High for creation!!";
+            throw GradeTooHighException(err_msg);
+		}
+	}
+	catch(const std::exception& e)
+		std::cerr << e.what() << std::endl;
+	
     std::cout << "Bureaucrat default Constructor called" << std::endl;
 }
 
@@ -82,12 +107,12 @@ Bureaucrat::~Bureaucrat()
 
 void Bureaucrat::incremment_grade()
 {
-	this->grade++;
+	this->grade--;
 }
 
 void Bureaucrat::decremment_grade()
 {
-	this->grade--;
+	this->grade++;
 }
 
 std::ostream& operator<<(std::ostream &_cout, Bureaucrat const  &other)
