@@ -5,10 +5,17 @@
 #include <ostream>
 #include <cstring>
 #include <cctype>
+#include <cstdlib> 
+#include <sstream> // library that allows concatenation, insertion and extration from strings. (it allows big performance from std::strings)
 
 #include<exception> // basics of exception classes
 #include<stdexcept> // exception ++ (way more standard exception classes )
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m" 
+#define BLUE  "\033[34m"
+#define END  "\033[0m"
 
 class Bureaucrat
 {
@@ -26,35 +33,36 @@ class Bureaucrat
         
         int getGrade()const;
         std::string getName()const;
-        ~Bureaucrat();
         
         class GradeTooHighException : public std::exception {
     		private:
 				std::string message;
 			public:
 				GradeTooHighException(const std::string &msg) : message(msg){} // 
-	        	const char* what() const noexcept override { return (message.c_str());}
+				virtual const char* what() const throw() { return (message.c_str());}
+				~GradeTooHighException()  throw(){} // 
+
     	};
     	class GradeTooLowException : public std::exception { // define the especific mesage on the .cpp file when using try and catch 
 			private:
 				std::string message;
 			public:
 				GradeTooLowException(const std::string &msg) : message(msg){} // constructor for exception class
-    	    	const char* what() const noexcept override { return (message.c_str());}
-    	};
-		void incremment_grade();
-		void decremment_grade();
-	};
+				virtual const char* what() const throw()  { return (message.c_str());}
+				~GradeTooLowException()  throw(){} // 
+		};
+			void incremment_grade();
+			void decremment_grade();
+	~Bureaucrat();
 	
-	std::ostream&  operator<<(std::ostream &_cout,  Bureaucrat const &other);
-/* 
-	void Bureaucrat::GradeTooHighException()
-{
-	std::cout << "Grade " << this->getGrade() << " is too high for the bureaucraf!\nGrades allowed between 1 and 150" << std::endl;
-}
+};
+	std::ostream &operator<<(std::ostream  &_cout,const  Bureaucrat &other);	
+	#endif
 
-void Bureaucrat::GradeTooLowException()
-{
-    std::cout << "Grade " << this->getGrade() << " is too low for the bureaucraf!\nGrades allowed between 1 and 150" << std::endl;
+	/* int main() {
+    try {
+        throw MyException("File not found: config.txt");
+    } catch (const std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
 } */
-#endif

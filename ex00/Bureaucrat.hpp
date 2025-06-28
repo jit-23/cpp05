@@ -5,10 +5,16 @@
 #include <ostream>
 #include <cstring>
 #include <cctype>
+#include <cstdlib> 
 
 #include<exception> // basics of exception classes
 #include<stdexcept> // exception ++ (way more standard exception classes )
 
+#define RED "\033[31m"
+#define GREEN "\033[32m"
+#define YELLOW "\033[33m" 
+#define BLUE  "\033[34m"
+#define END  "\033[0m"
 
 class Bureaucrat
 {
@@ -48,7 +54,8 @@ class Bureaucrat
 			void decremment_grade();
 	~Bureaucrat();
 	
-	std::ostream&  operator<<(std::ostream &_cout,  Bureaucrat const &other);
+};
+	std::ostream &operator<<(std::ostream  &_cout,const  Bureaucrat &other);	
 	#endif
 
 	/* int main() {

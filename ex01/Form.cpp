@@ -8,27 +8,48 @@ Form::Form() : name("Form"), signature(false), grade_to_sign(150), grade_to_exec
 
 Form::Form(std::string _name, int _grade_to_sign, int _grade_to_execute) : name(_name),signature(false),grade_to_sign(_grade_to_sign), grade_to_execute(_grade_to_execute)
 {
+	std::cout << "Default Form constructor called" << std::endl;
+	std::string err_msg;
+	std::string buffer;
+	std::stringstream out;
+	
+	/* try catch for value of execution */
 	try
     {
-        if ((_grade_to_execute > 150 || _grade_to_execute < 1))
-            throw _grade_to_execute;
-		if ((_grade_to_sign > 150 || _grade_to_sign < 1))
-            throw _grade_to_execute;
-        this->grade_to_execute = _grade_to_execute;
-        this->grade_to_sign = _grade_to_sign;
-    }
-    catch(int e)
+		if (_grade_to_execute < 1 || _grade_to_execute > 150)
+		{
+			out << _grade_to_execute;			
+			std::string buffer = " "	 + out.str();
+			err_msg = buffer + "is an invalid grade of execution for " + this->GetFormName();
+			if (_grade_to_execute < 1){
+				err_msg += std::string(" to High for initialization of designed Form!");
+				throw(GradeTooHighException(err_msg));
+			}
+			err_msg += std::string(" to Low for initialization of designed Form!");
+			throw(GradeTooLowException(err_msg));
+		}
+	}
+	catch(const std::exception& e){ std::cerr << e.what() << std::endl;}
+	/* try catch for value of sign */
+	try
     {
-        if (e > 150)
-            GradeTooHighException();
-        else
-            GradeTooLowException(); 
-    }
-	std::cout << "Default Form constructor called" << std::endl;
+		if (_grade_to_sign < 1 || _grade_to_sign > 150)
+		{
+			out << _grade_to_sign;			
+			std::string buffer = " "	 + out.str();
+			err_msg = buffer + "is an invalid grade of signing for " + this->GetFormName();
+			if (_grade_to_sign < 1){
+				err_msg += std::string(" to High for initialization of designed Form!");
+				throw(GradeTooHighException(err_msg));
+			}
+			err_msg += std::string(" to Low for initialization of designed Form!");
+			throw(GradeTooLowException(err_msg));
+		}
+	}
+	catch(const std::exception& e){ std::cerr << e.what() << std::endl;}	
 }
 
-void Form::Be
-
+/* 
 void Form::GradeTooHighException()
 {
 	if ((this->GetGradeToExecute() > 150 || this->GetGradeToExecute() < 1))
@@ -44,7 +65,7 @@ void  Form::GradeTooLowException()
     	std::cout << "Grade " << this->GetGradeToExecute() << " is too low for the Form !\nGrade to execute allowed between 1 and 150" << std::endl;
 	if ((this->GetGradeToSign() > 150 || this->GetGradeToSign() < 1))
     	std::cout << "Grade " << this->GetGradeToSign() << " is too low for the Form !\nGrade to sign allowed between 1 and 150" << std::endl;
-}
+} */
 
 Form::Form(const Form &other) : name(other.name), signature(other.signature)  , grade_to_sign(other.grade_to_sign), grade_to_execute(other.grade_to_execute)
 {	
