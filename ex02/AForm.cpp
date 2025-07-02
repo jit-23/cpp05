@@ -118,6 +118,8 @@ bool AForm::BeSigned( const Bureaucrat &other){
 
 /* EX02 functions */
 
+void AForm::SetTarget(const std::string _target) {this->target = _target;}
+
 void AForm::execute_it() const
 {
 	std::cout << "overwrite this!!!!!!!!!!!!!!" <<std::endl;

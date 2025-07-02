@@ -1,7 +1,7 @@
 NAME:=execute
 CXXFLAGS:= -Wall -Werror -Wextra -std=c++98
 CXX:= c++
-SRC:= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp
+SRC:= main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp #RobotomyRequestForm.cpp
 OBJ:=$(patsubst %.cpp, %.o, $(SRC))
 
 all: ${NAME}

@@ -9,7 +9,6 @@ ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", 
     std::cout << " ShrubberyCreationForm Default constructor called!" << std::endl;
 }
 
-
 ShrubberyCreationForm::ShrubberyCreationForm(std::string _target) : AForm("ShrubberyCreationForm", _target, 137, 145)
 {
     std::cout << " ShrubberyCreationForm Default constructor called!" << std::endl;
@@ -26,7 +25,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
     return (*this);
 }
 
-
+/* 
 
 bool ShrubberyCreationForm::BeSigned(const  Bureaucrat &other) {
 	if (this->GetFormSignature_bool())
@@ -47,7 +46,7 @@ bool ShrubberyCreationForm::BeSigned(const  Bureaucrat &other) {
 		catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 		return (false);
 	}
-}
+} */
 
 void ShrubberyCreationForm::execute_it() const
 {
@@ -68,7 +67,7 @@ void ShrubberyCreationForm::execute_it() const
 
 
 /* SETTERS */
-void ShrubberyCreationForm::SetTarget(const std::string _target) {this->target = _target;}
+
 
 /* DESTRUCTOR */
 ShrubberyCreationForm::~ShrubberyCreationForm(){

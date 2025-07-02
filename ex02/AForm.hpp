@@ -45,7 +45,7 @@ class AForm
 		
 		void execute(Bureaucrat const & executor) const ;
 		virtual void execute_it()const  = 0;
-		virtual bool BeSigned( const Bureaucrat  &other);
+		/* virtual */ bool BeSigned( const Bureaucrat  &other);
 	
 		std::string GetFormSignature_str()const;
 		bool GetFormSignature_bool()const;
@@ -54,6 +54,8 @@ class AForm
 		int GetGradeToExecute()const;
 
 		/* SETTER */
+		void SetTarget(const std::string _target);
+
 		void SetFormSignature(bool _bool);
 		
 		/* EX02 */

@@ -1,12 +1,16 @@
-#ifndef SHRUBBERYCREATIONFORM
-#define SHRUBBERYCREATIONFORM
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
+
+#include  "Bureaucrat.hpp"
+#include  "AForm.hpp"
+
 
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
 class Bureaucrat;
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 private:
     
@@ -18,11 +22,11 @@ bool signature;
     const int grade_to_execute; */
 
 public:
-    ShrubberyCreationForm();
-    ShrubberyCreationForm(std::string target);
-    ShrubberyCreationForm(const ShrubberyCreationForm &other);
+    RobotomyRequestForm();
+    RobotomyRequestForm(std::string target);
+    RobotomyRequestForm(const RobotomyRequestForm &other);
     
-    ShrubberyCreationForm& operator=(const ShrubberyCreationForm &other);
+    RobotomyRequestForm& operator=(const RobotomyRequestForm &other);
 
     /* virtual functions */
     /* virtual *//*  bool BeSigned(const Bureaucrat &other); */
@@ -32,15 +36,12 @@ public:
 
 
     /* SETTERS */         
-    void SetTarget(const std::string _target);
 
     /*  */
 
-    ~ShrubberyCreationForm();
+    ~RobotomyRequestForm();
 
 
 };
-
-    std::string get_tree();
 
 #endif
