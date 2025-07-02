@@ -1,21 +1,29 @@
-#ifndef FORM_H
-#define FORM_H
+#ifndef AFORM_H
+#define AFORM_H
 
 #include "Bureaucrat.hpp"
 
+#include <iostream>
+#include <string>
+#include <fstream>
+#include <cstdio>
+#include <cstdlib>
+
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		const std::string name;
+		const std::string target;
 		bool signature;
 		const int grade_to_sign;
 		const int grade_to_execute;
 	public:
-		Form();
-		Form(std::string _name, int _grade_to_sign, int _grade_to_execute);
-		Form(const Form &other);
+		AForm();
+		AForm(std::string _name, std::string _target,  int _grade_to_sign, int _grade_to_execute);
+		AForm(const AForm &other);
+		AForm& operator=(const AForm &other);
 
 		class GradeTooHighException : public std::exception {
 			private:
@@ -35,18 +43,26 @@ class Form
 			~GradeTooLowException()  throw(){} // 
 		};
 		
-		bool BeSigned( const Bureaucrat  &other);
+		void execute(Bureaucrat const & executor) const ;
+		virtual void execute_it()const  = 0;
+		virtual bool BeSigned( const Bureaucrat  &other);
+	
 		std::string GetFormSignature_str()const;
 		bool GetFormSignature_bool()const;
 		std::string GetFormName()const;
 		int GetGradeToSign()const;
 		int GetGradeToExecute()const;
-		Form& operator=(const Form &other);
-		~Form();
+
+		/* SETTER */
+		void SetFormSignature(bool _bool);
+		
+		/* EX02 */
+		std::string GetTarget()const;
+		
+		~AForm();
 	};
 	
-	std::ostream &operator<<(std::ostream &_cout, const Form   &other);
-
+	std::ostream &operator<<(std::ostream &_cout, const AForm   &other);
 
 
 #endif

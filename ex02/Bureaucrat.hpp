@@ -15,10 +15,30 @@
 #define GREEN "\033[32m"
 #define YELLOW "\033[33m" 
 #define BLUE  "\033[34m"
-#define END  "\033[0m"
 #define OLIVE "\033[38;5;3m"
 #define PURPLE "\033[38;5;5m"
 #define ORANGE "\033[38;5;208m"
+#define CYAN "\033[38;5;6m"
+#define LIGHT_GRAY "\033[38;5;7m"
+#define DARK_GRAY "\033[38;5;8m"
+#define END  "\033[0m"
+
+ 
+//#define RED "\033[0m"   
+//#define GREEN "\033[0m" 
+//#define YELLOW "\033[0m" 
+//#define BLUE "\033[0m"  
+//#define END "\033[0m" 
+//#define OLIVE "\033[0m" 
+//#define PURPLE "\033[0m" 
+//#define ORANGE "\033[0m" 
+//#define CYAN "\033[0m" 
+//#define LIGHT_GRAY "\033[0m" 
+//#define DARK_GRAY "\033[0m" 
+
+
+class AForm;
+
 class Bureaucrat
 {
     private:
@@ -53,8 +73,9 @@ class Bureaucrat
 				virtual const char* what() const throw()  { return (message.c_str());}
 				~GradeTooLowException()  throw(){} // 
 		};
-			void incremment_grade();
-			void decremment_grade();
+		void signForm(AForm &form);
+		void incremment_grade();
+		void decremment_grade();
 	~Bureaucrat();
 	
 };

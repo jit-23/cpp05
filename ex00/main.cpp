@@ -2,64 +2,63 @@
 
 int main()
 {
-    {	
-		std::cout << std::endl;
-		std::cout << GREEN << "First test - simple initialization of diferent constructors" << END << std::endl << std::endl;
-		
-		Bureaucrat b1; // void constructor
-		Bureaucrat b2("Fernando"); // only name 
-		Bureaucrat b3("Lucart", 3); // name + grade
-	
-		std::cout << BLUE << "Operator overload to print those bureaucrats!!" <<  END << std::endl;
-		std::cout << b1 << std::endl;
-		std::cout << b2 << std::endl;
-		std::cout << b3 << std::endl;
-		
-		std::cout << BLUE << "Increment and Decrement of bureaucrats!!" <<  END << std::endl;
-		
-		//std::cout << b1 << std::endl;
-
-		std::cout << "\n" << BLUE << b1.getName() << END << std::endl;
+	std::cout << OLIVE << "#===================================================================================#" << END <<  std::endl;
+	std::cout << OLIVE << "# First test(1) - Creation of Bureaucrat b1 and b2 decrement/increment till failure #" << END <<  std::endl;
+	std::cout << OLIVE << "#===================================================================================#" << END <<  std::endl <<  std::endl;
+	/* First Test */
+	try
+	{
+		Bureaucrat b1(2);
+		std::cout << PURPLE <<"Operator overload(b1): "<<END <<  b1 << std::endl;
+		std::cout << BLUE << b1.getName() << " incremment till failure:" << END << std::endl;
 		for (short i = 0; i < 3; i++)
 		{
-			std::cout << b1 << std::endl;
+			std::cout << "Grade : " <<  b1.getGrade() << std::endl;
 			b1.incremment_grade();
 		}
-		for (short i = 0; i < 5; i++)
-		{
-			std::cout << b1 << std::endl;
-			b1.decremment_grade();
-		}
-		std::cout << "\n" << BLUE << b3.getName() << END << std::endl;
-		for (short i = 0; i < 5; i++)
-		{
-			std::cout << b3 << std::endl;
-			b3.incremment_grade();
-		}
 	}
+	catch(const std::exception& e)
 	{
-		std::cout << RED << "*****************\n" << END << std::endl;  
-		std::cout << GREEN << "Second test - initialization of non valid grades" << END << std::endl << std::endl;
-		Bureaucrat b1("Fde-jesu", 200); // non valid, to low
-		Bureaucrat b2("bureaucrat_4", 0); // non valid, to high
-
-
-		std::cout << b1 << std::endl << std::endl;
-		std::cout << b2 << std::endl;
+		std::cerr << ORANGE << e.what() << END<< '\n';
 	}
+	/*******************************/
+	try
+	{
+		Bureaucrat b2("Fernando", 147); //valid Bureaucrat 
+		std::cout <<PURPLE<< "Operator overload(b2): "<< END <<  b2 << std::endl;
+		std::cout << BLUE << b2.getName() << " decremment till failure:" << END << std::endl;
+		for (short i = 0; i < 5; i++)
+		{
+			std::cout << "Grade : "<< b2.getGrade() << std::endl;
+			b2.decremment_grade();
+		}
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << ORANGE << e.what() << END<< '\n';
+	}
+	std::cout << OLIVE << "\n#=====================================================#" << END <<  std::endl;
+	std::cout << OLIVE << "# Second test(2) - Creation of Bureaucrat b3, b4, b5; #" << END <<  std::endl;
+	std::cout << OLIVE << "# Application of Copy constructor and  operator=      #" << END <<  std::endl;
+	std::cout << OLIVE << "#=====================================================#" << END <<  std::endl <<  std::endl;
+	/* Second test  */
+	try
+	{
+		Bureaucrat b3("Lucart", 70);
+		Bureaucrat b4(b3);
+		Bureaucrat b5("fifth Bureaucrat", 140);
 
-	//Bureaucrat b1();
-    //std::cout << b1.getGrade() << std::endl;
-    //Bureaucrat b2(710);
-    //std::cout << b2.getGrade() << std::endl;
-    //Bureaucrat b3("b3");
-    //std::cout << b3.getGrade() << std::endl;
-    //Bureaucrat b4("b4", 130);
-    //std::cout << b4.getGrade() << std::endl;
-//
-	//std::cout << "-----------------------" << std::endl;
-	//
-	//std::cout << b4 << std::endl;
-//
+		std::cout << PURPLE << "Operator overload (b3): " <<END<<  b3 << std::endl;
+		std::cout << PURPLE <<"Operator overload (b4) : " <<END<<  b4 << std::endl;
+		std::cout << PURPLE <<"Operator overload (b5) : " <<END<<  b5 << std::endl;
+		
+		b4 = b5;
+		std::cout << "b4 = b5;" << std::endl;
+		std::cout << PURPLE <<"Operator overload(b4)  : " <<END<<  b4 << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << ORANGE << e.what() << END<< '\n';
+	}
     return 0;
 }

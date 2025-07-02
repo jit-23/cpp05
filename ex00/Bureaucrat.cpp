@@ -1,36 +1,28 @@
 #include "Bureaucrat.hpp"
 
-
-std::ostream &operator<<(std::ostream &_cout,  Bureaucrat const &other);
-
-
 /* nothing passed */
 Bureaucrat::Bureaucrat(void) : name("bureaucrat"), grade(150)
 {
-    std::cout << "Bureaucrat default Constructor called" << std::endl;
+    std::cout << GREEN << "Bureaucrat default Constructor called"<< END << std::endl;
 }
 
 /* only name passed */
 Bureaucrat::Bureaucrat(const std::string _name) : name(_name)
 {
     grade = 150;
-    std::cout << "Bureaucrat default Constructor called" << std::endl;
+    std::cout << GREEN<< "Bureaucrat default Constructor called" << END<<std::endl;
 }
 
-#include <sstream> // library that allows concatenation, insertion and extration from strings. (it allows big performance from std::strings)
 
 /* only grade passed */
-Bureaucrat::Bureaucrat(int _grade) : grade(_grade)
+Bureaucrat::Bureaucrat(int _grade) : name("Bureaucrat"),  grade(_grade) 
 {
-	std::cout << "Bureaucrat default Constructor called" << std::endl;
-	this->name = "Bureaucrat";
+	std::cout << GREEN <<"Bureaucrat default Constructor called" << END<<std::endl;
 	std::stringstream out;
 	out << _grade;
-	std::string buffer = " "	 + out.str();
+	std::string buffer = " " + out.str();
 	std::string err_msg = "Invalid grade for " + this->getName();
 	err_msg += buffer;
-	try
-	{
 		if (_grade > 150)
 		{
 			err_msg += " is to Low for creation!!";
@@ -42,22 +34,17 @@ Bureaucrat::Bureaucrat(int _grade) : grade(_grade)
             throw GradeTooHighException(err_msg);
 		}
 	}
-	catch(const std::exception& e){ std::cerr << e.what() << std::endl;}
 	
-}
 
 /* both args(name and grade) passed */
 Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade(_grade)
 {
-	std::cout << "Bureaucrat default Constructor called" << std::endl;
+	std::cout << GREEN<<"Bureaucrat default Constructor called" << END<<std::endl;
 	std::stringstream out;
 	out << _grade;
 	std::string buffer = " "	 + out.str();
 	std::string err_msg = "Invalid grade for " + this->getName();
 	err_msg += buffer;
-
-	try
-	{
 		if (_grade > 150)
 		{
 			err_msg =  err_msg + std::string(" is to Low") + std::string("!!");
@@ -69,68 +56,37 @@ Bureaucrat::Bureaucrat(const std::string _name, int _grade) : name(_name), grade
 			err_msg =  err_msg + std::string(" is to High") + std::string("!!");
             throw GradeTooHighException(err_msg);
 		}
-	}
-	catch(const std::exception& e){std::cerr << e.what() << std::endl;}
+	//	catch(const std::exception& e){std::cerr << e.what() << std::endl;}
 	
 }
 
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat &other)
 {
     if (this != &other)
-    {
-        name = other.getName();
         grade = other.getGrade();
-    }
+       // name is a const var, cant assign it. so grade will be the only thing being copied
     return (*this);
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)// : name(other.name), grade(other.grade)
-{
-    std::cout << "Bureaucrat copy Constructor called" << std::endl;
-    *this = other;
-}
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) { std::cout <<GREEN<< "Bureaucrat copy Constructor called" << END<< 	std::endl;}
 
-int Bureaucrat::getGrade()const{
-    return this->grade;
-}
+int Bureaucrat::getGrade()const{ return this->grade;}
 
-std::string  Bureaucrat::getName() const{
-    return this->name;
-}
+std::string  Bureaucrat::getName() const{ return this->name;}
 
-//void Bureaucrat::GradeTooHighException()
-//{
-//	std::cout << "Grade " << this->getGrade() << " is too high for the bureaucraf!\nGrades allowed between 1 and 150" << std::endl;
-//}
-//
-//void Bureaucrat::GradeTooLowException()
-//{
-//    std::cout << "Grade " << this->getGrade() << " is too low for the bureaucraf!\nGrades allowed between 1 and 150" << std::endl;
-//}
 
-Bureaucrat::~Bureaucrat()
-{
-std::cout << "Bureaucrat Destructor called" << std::endl;
-}
-
+Bureaucrat::~Bureaucrat() { std::cout  << RED << "Bureaucrat Destructor called" << END <<  std::endl;}
 void Bureaucrat::incremment_grade()
 {
-	if (this->grade - 1 == 0)
-	{
-		std::cout << "Can't increment more than 1!" <<  std::endl;
-		return;
-	}
+	if (this->grade - 1 <= 0)
+		throw(GradeTooHighException("Can't incremment more than 1!"));
 	this->grade--;
-
 }
 
 void	Bureaucrat::decremment_grade()
 {
-	if (this->grade + 1 == 151)
-	{
-		std::cout << "Can't decrement more than 150!" <<  std::endl;
-		return;
-	}
+	if (this->grade + 1  >= 151)
+		throw(GradeTooHighException("Can't decremment less than 150!"));
 	this->grade++;
 }
 

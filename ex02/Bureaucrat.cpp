@@ -1,5 +1,5 @@
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 class Form;
 /* nothing passed */
 Bureaucrat::Bureaucrat(void) : name("bureaucrat"), grade(150)
@@ -91,7 +91,7 @@ void	Bureaucrat::decremment_grade()
 	this->grade++;
 }
 
-void Bureaucrat::signForm(Form &form){
+void Bureaucrat::signForm(AForm &form){
 	if (form.BeSigned(*this))
 		std::cout << GREEN << this->getName() << " signed " << form.GetFormName() << END << std::endl;
 	// if be signed is not posible the throw inside of besigned is activated, so there is no need for else statemment here	
