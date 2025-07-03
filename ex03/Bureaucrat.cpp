@@ -16,9 +16,9 @@ Bureaucrat::Bureaucrat(const std::string _name) : name(_name)
 
 
 /* only grade passed */
-Bureaucrat::Bureaucrat(int _grade) : name("Bureaucrat"),  grade(_grade)
+Bureaucrat::Bureaucrat(int _grade) : name("Bureaucrat"),  grade(_grade) 
 {
-	std::cout << GREEN <<"Bureaucrat default Constructor called" << END <<std::endl;
+	std::cout << GREEN <<"Bureaucrat default Constructor called" << END<<std::endl;
 	std::stringstream out;
 	out << _grade;
 	std::string buffer = " " + out.str();
@@ -98,12 +98,6 @@ void Bureaucrat::signForm(AForm &form){
 	
 	//else
 		/* std::cout << this->getName() << " couldn't sign " << form.GetFormName() << " because their mom didn't let them :("<< std::endl; */
-}
-
-void Bureaucrat::executeForm(AForm const & form) const{
-	form.execute(*this);
-	std::cout << this->getName() << " executed " << std::endl;
-
 }
 
 std::ostream &operator<<(std::ostream  &_cout, const Bureaucrat &other)

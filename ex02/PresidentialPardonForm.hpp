@@ -1,5 +1,5 @@
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 
 
@@ -9,7 +9,7 @@
 #include <ctime>
 class Bureaucrat;
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 private:
     
@@ -21,11 +21,11 @@ bool signature;
     const int grade_to_execute; */
 
 public:
-    RobotomyRequestForm();
-    RobotomyRequestForm(std::string target);
-    RobotomyRequestForm(const RobotomyRequestForm &other);
+    PresidentialPardonForm();
+    PresidentialPardonForm(std::string target);
+    PresidentialPardonForm(const PresidentialPardonForm &other);
     
-    RobotomyRequestForm& operator=(const RobotomyRequestForm &other);
+    PresidentialPardonForm& operator=(const PresidentialPardonForm &other);
 
     /* virtual functions */
     /* virtual *//*  bool BeSigned(const Bureaucrat &other); */
@@ -38,7 +38,7 @@ public:
 
     /*  */
 
-    ~RobotomyRequestForm();
+    ~PresidentialPardonForm();
 
 
 };
