@@ -7,13 +7,15 @@ Intern::Intern()
 
 Intern::Intern(const Intern &other)
 {
+    (void)other;
     std::cout << "Intern copy Construct called!!" << std::endl;
     /* nothing to copy!!!! */
 } 
 
 Intern& Intern::operator=(const Intern &other)
 {  
-    return (*this);
+    (void)other;
+    return (*this);    
 } 
 
 Intern::~Intern()
@@ -24,7 +26,7 @@ Intern::~Intern()
 
 AForm& Intern::makeForm(const std::string form_name, const std::string _target)
 {
-
+    return ();
 }
 
 /* Chapter VI

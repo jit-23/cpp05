@@ -17,6 +17,4 @@ public:
     AForm &makeForm(const std::string form_name, const std::string _target);
 };
 
-
-
 #endif
