@@ -3,6 +3,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "AForm.hpp"
+#include "Intern.hpp"
 
 void explain_color_scheme(){
 
@@ -14,35 +15,56 @@ void explain_color_scheme(){
 
 int main()
 {
+	
+	Intern someRandomIntern;
+	try
 	{
-		
-		Bureaucrat b1("this guy", 2);
-		ShrubberyCreationForm S("FORM1!");
-		std::cout << S << std::endl; 
-		std::cout << S.GetTarget() << std::endl; 
-		S.execute(b1);
-		/* code */
+		AForm* rrf1;
+		rrf1 = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+		std::cout << *rrf1 << std::endl; 
 	}
+	catch(const std::exception& e)
 	{
-		
-		Bureaucrat b1("this guy", 2);
-		RobotomyRequestForm S("FORM2!");
-		std::cout << S << std::endl; 
-		std::cout << S.GetTarget() << std::endl; 
-		S.execute(b1);
-		/* code */
+		std::cerr << ORANGE << e.what() << END << '\n';
 	}
+
+	/* 1 */
+
+	try
 	{
-		
-		Bureaucrat b1("this guy", 2);
-		PresidentialPardonForm S("FORM3!");
-		std::cout << S << std::endl; 
-		std::cout << S.GetTarget() << std::endl; 
-		S.execute(b1);
-		/* code */
+		AForm* rrf2;
+		rrf2 = someRandomIntern.makeForm("ShrubberyCreationForm", "Bender");
+		std::cout << *rrf2 << std::endl; 
 	}
+	catch(const std::exception& e)
+	{
+		std::cerr << ORANGE << e.what() << END << '\n';
+	}
+	/*  2 */
+	try
+	{
+		AForm* rrf2;
+		rrf2 = someRandomIntern.makeForm("PresidentialPardonForm", "Bender");
+		std::cout << *rrf2 << std::endl; 
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << ORANGE << e.what() << END << '\n';
+	}
+	/* 3 */
+	try
+	{
+		AForm* rrf2;
+		rrf2 = someRandomIntern.makeForm("andsdndanadn", "Bender");
+		std::cout << *rrf2 << std::endl; 
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << ORANGE << e.what() << END << '\n';
+	}
+	/*  */ 
 	return 0;
-}
+	}
 
 /* RobotomyRequestForm: Required grades: sign 72, exec 45
 Makes some drilling noises, then informs that <target> has been robotomized

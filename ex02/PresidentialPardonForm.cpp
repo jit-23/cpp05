@@ -3,18 +3,18 @@
 
 PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", "the presindent", 72, 45 )
 {
-    std::cout << "PresidentialPardonForm Default constructor called!" << std::endl;
+    std::cout <<GREEN<< "PresidentialPardonForm Default constructor called!" <<END<< std::endl;
 }
 
 
 PresidentialPardonForm::PresidentialPardonForm(std::string _target) : AForm("PresidentialPardonForm", _target, 72, 45)
 {
-    std::cout << "PresidentialPardonForm Default constructor called!" << std::endl;
+    std::cout <<GREEN<< "PresidentialPardonForm Default constructor called!" <<END<< std::endl;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &other) :  AForm(other)
 {
-    std::cout << "PresidentialPardonForm copy constructor called!" << std::endl;
+    std::cout <<GREEN<< "PresidentialPardonForm copy constructor called!" <<END<< std::endl;
 }
 
 PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm &other ) {
@@ -25,12 +25,12 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 
 void PresidentialPardonForm::execute_it()const{
     
-    std::cout << this->GetTarget() << " has been pardoned by !✨Zaphod Beeblebrox✨! "<< std::endl;
+    std::cout << this->GetTarget() << " has been pardoned by !✨Zaphod Beeblebrox✨! "<< END<< std::endl;
 
 }
 
 PresidentialPardonForm::~PresidentialPardonForm(){
-    std::cout << "PresidentialPardonForm Default destructor called!" << std::endl;
+    std::cout <<RED<< "PresidentialPardonForm Default destructor called!" <<END<< std::endl;
 }
 
 /* PresidentialPardonForm: Required grades: sign 72, exec 45

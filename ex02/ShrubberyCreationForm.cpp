@@ -6,17 +6,17 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : AForm("ShrubberyCreationForm", "the president", 137, 145)// , grade_to_execute(137), grade_to_sign(145)
 {
-    std::cout << "ShrubberyCreationForm Default constructor called!" << std::endl;
+    std::cout <<GREEN<< "ShrubberyCreationForm Default constructor called!" <<END<<  std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string _target) : AForm("ShrubberyCreationForm", _target, 137, 145)
 {
-    std::cout << "ShrubberyCreationForm Default constructor called!" << std::endl;
+    std::cout <<GREEN<< "ShrubberyCreationForm Default constructor called!" <<END<< std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) :  AForm(other)
 {
-    std::cout << "ShrubberyCreationForm copy constructor called!" << std::endl;
+    std::cout <<GREEN<< "ShrubberyCreationForm copy constructor called!" <<END<< std::endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other ) {

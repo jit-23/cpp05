@@ -1,4 +1,9 @@
 #include  "Intern.hpp"
+#include  "AForm.hpp"
+
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 Intern::Intern()
 {
@@ -23,10 +28,31 @@ Intern::~Intern()
     std::cout << "Intern Defaut destructor called!!" << std::endl;
 }
 
+AForm* CreateShrubberyForm(std::string _target){ return new ShrubberyCreationForm(_target);}
+AForm* CreatePresidentialForm(std::string _target){ return new PresidentialPardonForm(_target);}
+AForm* CreateRobotForm(std::string _target){ return new RobotomyRequestForm(_target);};
 
-AForm& Intern::makeForm(const std::string form_name, const std::string _target)
+/* 
+    AForm* -> return value
+    *Fptr -> pointer to function
+    [] -> size of the function;
+    (std::string) -> type of var that is being passed to the funtions;
+    */
+AForm* Intern::makeForm(const std::string form_name, const std::string _target)
 {
-    return ();
+    std::string function_names[] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+    AForm* (*Fptr[])(std::string) = {CreatePresidentialForm, CreateRobotForm, CreateShrubberyForm};  
+    AForm *_form = NULL;
+
+    for (unsigned short i = 0; i < 3; i++)
+        (form_name == function_names[i] && (_form = Fptr[i](_target), true));
+    if (!_form)
+    {
+        std::string err_msg = "Invalid name for Form: " + form_name + " can't be created!"; 
+        throw std::runtime_error(err_msg);
+        // runtime_error(msg) catches the error only in the execution, not in the compilation 
+    }   
+    return (_form);
 }
 
 /* Chapter VI

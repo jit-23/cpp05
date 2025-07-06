@@ -13,34 +13,66 @@ void explain_color_scheme(){
 }
 
 int main()
-{
+{		
+	explain_color_scheme();
+	
+	std::cout << OLIVE << "#=================================================#" << END <<  std::endl;
+	std::cout << OLIVE << "# First test(1) - Creation of Bureaucrats b(n's)  #" << END <<  std::endl;
+	std::cout << OLIVE << "# and execution of all Forms                      #" << END <<  std::endl;
+	std::cout << OLIVE << "#=================================================#" << END <<  std::endl <<  std::endl;
+
+	std::cout << OLIVE << "\n# == (1.1) ShrubberyCreationForm == #" << END << std::endl;
+	try
 	{
-		
 		Bureaucrat b1("this guy", 2);
 		ShrubberyCreationForm S("FORM1!");
 		std::cout << S << std::endl; 
-		std::cout << S.GetTarget() << std::endl; 
-		S.execute(b1);
-		/* code */
+		b1.executeForm(S);
+		std::cout << S << std::endl; 
+
 	}
+	catch(const std::exception& e)
 	{
-		
-		Bureaucrat b1("this guy", 2);
+		std::cerr <<ORANGE << e.what() <<END<< '\n';
+	}
+	std::cout << OLIVE << "\n# == (1.2)  RobotomyRequestForm == #" << END << std::endl;
+	try
+	{
+		Bureaucrat b2("that guy", 2);
 		RobotomyRequestForm S("FORM2!");
 		std::cout << S << std::endl; 
-		std::cout << S.GetTarget() << std::endl; 
-		S.execute(b1);
-		/* code */
+		b2.executeForm(S);
 	}
+	catch(const std::exception& e)
 	{
-		
-		Bureaucrat b1("this guy", 2);
+		std::cerr <<ORANGE << e.what() <<END<< '\n';
+	}
+	std::cout << OLIVE << "\n# == (1.3) PresidentialPardonForm == #" << std::endl;
+	try
+	{
+		Bureaucrat b3("Fernando", 2);
 		PresidentialPardonForm S("FORM3!");
 		std::cout << S << std::endl; 
-		std::cout << S.GetTarget() << std::endl; 
-		S.execute(b1);
-		/* code */
+		b3.executeForm(S);
 	}
+	catch(const std::exception& e)
+	{
+		std::cerr <<ORANGE << e.what() <<END<< '\n';
+	}
+	std::cout << OLIVE << "\n# == (1.4) NON VALID GRADE FOR SIGNING == #" << std::endl;
+	try
+	{
+		Bureaucrat b4("LUCAS", 150);
+		PresidentialPardonForm S("FORM4!");
+		std::cout << S << std::endl; 
+		b4.executeForm(S);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr <<ORANGE << e.what() <<END<< '\n';
+
+	}
+	
 	return 0;
 }
 

@@ -84,7 +84,7 @@ std::ostream &operator<<(std::ostream &_cout, const AForm   &other)
 		color = GREEN;
 	else
 		color = RED;
-	_cout << "Form: " << other.GetFormName()  << std::endl;
+	_cout << BLUE << "Form: " << other.GetFormName()  << std::endl;
 	_cout << "Signature situation: "<< color << other.GetFormSignature_str() << BLUE <<std::endl;
 	_cout << "Grade neccessary for signing : " << other.GetGradeToSign() <<  std::endl;
 	_cout << "Grade neccessary for execution : " << other.GetGradeToExecute() <<  std::endl;
