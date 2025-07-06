@@ -2,18 +2,18 @@
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", "the presindent", 72, 45 )
 {
-    std::cout << "RobotomyRequestForm Default constructor called!" << std::endl;
+    std::cout <<GREEN<< "RobotomyRequestForm Default constructor called!" <<END<< std::endl;
 }
 
 
 RobotomyRequestForm::RobotomyRequestForm(std::string _target) : AForm("RobotomyRequestForm", _target, 72, 45)
 {
-    std::cout << "RobotomyRequestForm Default constructor called!" << std::endl;
+    std::cout <<GREEN<< "RobotomyRequestForm Default constructor called!" <<END<< std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) :  AForm(other)
 {
-    std::cout << "RobotomyRequestForm copy constructor called!" << std::endl;
+    std::cout <<GREEN<< "RobotomyRequestForm copy constructor called!" <<END<< std::endl;
 }
 
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm &other ) {
@@ -35,7 +35,7 @@ void RobotomyRequestForm::execute_it()const{
 }
 
 RobotomyRequestForm::~RobotomyRequestForm(){
-    std::cout << "RobotomyRequestForm Default destructor called!" << std::endl;
+    std::cout <<RED<< "RobotomyRequestForm Default destructor called!" <<END<< std::endl;
 }
 
 /* RobotomyRequestForm: Required grades: sign 72, exec 45

@@ -32,7 +32,6 @@ class AForm
 			GradeTooHighException(const std::string &msg) : message(msg){} // 
 			virtual const char* what() const throw() { return (message.c_str());}
 			~GradeTooHighException()  throw(){} // 
-			
     	};
     	class GradeTooLowException : public std::exception { // define the especific mesage on the .cpp file when using try and catch 
 			private:
@@ -61,7 +60,7 @@ class AForm
 		/* EX02 */
 		std::string GetTarget()const;
 		
-		~AForm();
+		virtual ~AForm();
 	};
 	
 	std::ostream &operator<<(std::ostream &_cout, const AForm   &other);

@@ -51,7 +51,6 @@ bool ShrubberyCreationForm::BeSigned(const  Bureaucrat &other) {
 void ShrubberyCreationForm::execute_it() const
 {
 	std::string shrubbery = get_tree();
-	std::cout << this->GetTarget() << std::endl;
 	std::string file_name = this->GetTarget() + std::string("_shrubbery");
 	std::fstream outfile;
 	outfile.open(file_name.c_str(), std::ios::out);

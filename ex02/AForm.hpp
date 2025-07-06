@@ -61,7 +61,7 @@ class AForm
 		/* EX02 */
 		std::string GetTarget()const;
 		
-		~AForm();
+		virtual ~AForm();
 	};
 	
 	std::ostream &operator<<(std::ostream &_cout, const AForm   &other);

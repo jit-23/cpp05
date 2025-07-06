@@ -10,7 +10,6 @@ ${NAME}: ${OBJ}
 	${CXX}  ${CXXFLAGS} ${OBJ} -o ${NAME}
 clean:
 	rm -f ${OBJ}
-	rm -f *_shrubbery
 fclean: clean
 	rm -f ${NAME}
 re: fclean all

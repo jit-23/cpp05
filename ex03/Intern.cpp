@@ -7,13 +7,13 @@
 
 Intern::Intern()
 {
-    std::cout << "Intern Defaut Construct called!!" << std::endl;
+    std::cout <<GREEN<< "Intern Defaut Construct called!!" <<END<< std::endl;
 } 
 
 Intern::Intern(const Intern &other)
 {
     (void)other;
-    std::cout << "Intern copy Construct called!!" << std::endl;
+    std::cout <<GREEN<< "Intern copy Construct called!!" <<END<< std::endl;
     /* nothing to copy!!!! */
 } 
 
@@ -25,7 +25,7 @@ Intern& Intern::operator=(const Intern &other)
 
 Intern::~Intern()
 {
-    std::cout << "Intern Defaut destructor called!!" << std::endl;
+    std::cout <<RED<< "Intern Defaut destructor called!!" <<END<< std::endl;
 }
 
 AForm* CreateShrubberyForm(std::string _target){ return new ShrubberyCreationForm(_target);}
@@ -45,7 +45,11 @@ AForm* Intern::makeForm(const std::string form_name, const std::string _target)
     AForm *_form = NULL;
 
     for (unsigned short i = 0; i < 3; i++)
-        (form_name == function_names[i] && (_form = Fptr[i](_target), true));
+        if (form_name == function_names[i])
+        {
+            _form = Fptr[i](_target);
+            break;
+        }
     if (!_form)
     {
         std::string err_msg = "Invalid name for Form: " + form_name + " can't be created!"; 

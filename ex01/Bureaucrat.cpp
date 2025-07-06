@@ -93,7 +93,7 @@ void	Bureaucrat::decremment_grade()
 
 void Bureaucrat::signForm(Form &form){
 	if (form.BeSigned(*this))
-		std::cout << GREEN << this->getName() << " signed " << form.GetFormName() << END << std::endl;
+		std::cout << /* GREEN << */ this->getName() << " signed " << form.GetFormName() << END << std::endl;
 	// if be signed is not posible the throw inside of besigned is activated, so there is no need for else statemment here	
 	
 	//else

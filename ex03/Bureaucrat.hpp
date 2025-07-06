@@ -73,6 +73,7 @@ class Bureaucrat
 				virtual const char* what() const throw()  { return (message.c_str());}
 				~GradeTooLowException()  throw(){} // 
 		};
+		void executeForm(AForm const & form) const;
 		void signForm(AForm &form);
 		void incremment_grade();
 		void decremment_grade();
